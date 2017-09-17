@@ -19,13 +19,13 @@
 			$(function(){
 
 				$('.navbar-menu-icon').on('click', function() {
-					$('header').toggleClass('on');
-					if( $("header").hasClass('on') ) {
-							TweenMax.to("header", 0.4, {
+					$('.main').toggleClass('on');
+					if( $('.main').hasClass('on') ) {
+							TweenMax.to('.main', 0.4, {
 							  x:250
 							});
 					} else {
-							TweenMax.to("header", 0.4, {
+							TweenMax.to('.main', 0.4, {
 							  x:0
 							});
 					}
@@ -35,6 +35,10 @@
 
 	</script>
 	<style type="text/css">
+		.main {
+	       	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
+	       	background: #eeeeee;
+		}
 
 		.spinner {
     		width: 250px;
@@ -133,28 +137,37 @@
 		   	position: fixed;
 		    z-index: 2;
 		}
-		header	{
-			background-color: #287DA6;
-		    background-image: url(https://atmospherejs.com/bg-hero-1200x600.jpg);
-		    background-size: cover;
-		    background-repeat: no-repeat;
-		    background-position: center top;
-    		height: 640px;
-    		width: 100%;
-		    position: absolute;
-		    color: white;
-		    padding: 23px 22px;
-		    text-align: center;
+		.nav-bar {
+			padding:14px 20px;
+			position: absolute;
+			top: 0.5rem;
+			right: 0;
+			bottom: auto;
+			left: 0;
+			width: auto;
+			height: auto;
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			-ms-transform: translate3d(0, 0, 0);
+			-o-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			text-align: center;
+			z-index: 1;
+			font-size: 0.9rem;
+		}
+
+
+		.header	{
+			background: white;
+/*    		height: 640px;
+*/    		width: 100%;
+			padding-top: 8em;
+    		padding-bottom: 4em;
 		    top: 0;
     		z-index: -1;
-    		color: white;
-    		
-
-
-
    		}
 		.navbar-menu-icon {
-			background: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(255 ,255 , 255, 1.0)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 6h24M4 12h18M4 18h22M4 24h14'/></svg>") no-repeat center center;
+			background: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(41 ,43 , 44, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 6h24M4 12h18M4 18h22M4 24h14'/></svg>") no-repeat center center;
       		display: inline-block;
 			width: 1.3em;
     		height: 1.3em;
@@ -164,18 +177,18 @@
     		background-size: 100% 100%;
 		}
 		.logo {
-			    font-weight: 700;
-    font-size: 80%;
+		    font-weight: 700;
+		    font-size: 80%;
 		    line-height: 18px;
 		    display: inline-block;
 		    letter-spacing: .3em;
 		    text-decoration: none;
 		    text-transform: uppercase;
-		    color: rgba(255,255,255,1.0);
+		    color: inherit;
 		}
 		.logo:hover , .logo:focus  {
 		    text-decoration: none;
-		    color: rgba(255,255,255,1.0);
+		    color: inherit;
 		}
 		.menu {
 			position: absolute;
@@ -188,37 +201,68 @@
 		body {
 			overflow-x: hidden;
 		}
-
+		.primary .title , .card h2 , .heading h2 {
+			font-weight: 100;
+		}
+		.primary p {
+			color:gray;
+		}
+		.card-header {
+			font-size: 13px;
+    line-height: 18px;
+    font-weight: 600;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    word-break: break-all;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    color: #999999;
+    margin: 0 auto 1em 0;
+    background: none;
+		}
+		.card-block {
+		}
+		.heading h2 {
+		    padding-bottom: 0.5em;
+    		padding-top: 0.8em;
+    	}
+    	.subtitle {
+    		    font-weight: 600;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-size: 13px;
+    line-height: 18px;
+    word-wrap: break-word;
+    word-break: break-all;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    margin-bottom: .75em;
+    color: #999999;
+    	}
+    	.secondary span {
+    		padding-bottom: 0.8rem;
+    		font-weight: 600;
+    		display: block;
+    	}
 	</style>
 </head>
 <body>
-	 		<div class="app">
+<div class="app">
 
 	<div class="wrapper">
-   <div class="spinner">
+   		<div class="spinner">
 	   	</div>
    	</div>
- <!--   	   <div class="spinner">
-	   	</div>
- -->  	<header>
-  		  <div class="nav-bar row">
-		    <div class="col">
-			  <a  href="#" class="navbar-menu-icon float-left"></a>
-		    </div>
-		    <div class="col">
-			  <a class="logo" href="/"><span></spam>Academic Committee</a>
-		    </div>
-		    <div class="col">
-			      <form class="form-inline my-2 my-lg-0 float-right">
-			    	<input class="form-control mr-sm-2" type="text" placeholder="Search">
-			    	<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-			  	  </form>
-		    </div>
-		  </div>
-		  <div class="header row">
-		  </div>
-	</header>
-	<div class="menu">
+		<div class="menu">
 	
 		<div class="container">
 				<ul>
@@ -226,8 +270,81 @@
 					<li>Halim</li>
 				</ul>
 	  	</div>
-	</div>		
-		</div>		
+	</div>
+	<div class="main">
+		<div class="nav-bar row">
+			    <div class="col">
+				  <a  href="#" class="navbar-menu-icon float-left"></a>
+			    </div>
+			    <div class="col">
+				  <a class="logo" href="/"><span></spam>Academic Committee</a>
+			    </div>
+			    <div class="col">
+				      <form class="form-inline my-2 my-lg-0 float-right">
+				    	<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				    	<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+				  	  </form>
+			    </div>
+		</div>
+		
+		<div class="content">
+			
+			<div class="header">
+	 			<div class="container">
+					<div class="row">
+						<div class="primary	col-9">
+							<h1 class="title">Marketing Principles</h1>
+							<p>One of essentials business functions that about creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large.</p>
+						</div>
+					    <div class="secondary col-3">
+							<div class="subtitle">Program</div><span>English Section & Gerogia </span>
+							<div class="subtitle">Year</div><span>Second</span>
+							<div class="subtitle">Semester</div><span>1</span>
+					    </div>
+			  		</div>
+			  	</div>
+			</div>
+		 	<div class="section">
+				<div class="container">
+					<div class="heading"><h2 class="text-muted">Materials</h2></div>
+					<div class="row">
+						<div class="col-9">
+							<div class="card">
+							    <div class="card-header">Videos</div>
+							    <div class="card-block">
+							    
+							      <h4 class="card-title">Card title</h4>
+							      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							
+							    </div>
+							    <div class="card-footer">
+							      <small class="text-muted">Last updated 3 mins ago</small>
+							    </div>
+							    
+							</div>
+						</div>
+					    <div class="col-3">
+					    	<div class="card">
+							    <div class="card-header">Files</div>
+							    <div class="card-block">
+							    
+							      <h4 class="card-title">Card title</h4>
+							      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							
+							    </div>
+							    <div class="card-footer">
+							      <small class="text-muted">Last updated 3 mins ago</small>
+							    </div>
+							    
+							</div>
+
+						</div>
+					</div>
+		  		</div>
+		  	</div>
+		</div>
+	</div>
+</div>		
 
 
 </body>
