@@ -1,21 +1,31 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
 	<title>Interance Game</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/smooth-scrollbar@latest/dist/smooth-scrollbar.css">
+<script src="https://unpkg.com/smooth-scrollbar@latest/dist/smooth-scrollbar.js"></script>
 	<script	src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	<script type="text/javascript">
+
 			setTimeout(function(){
 				// $(".spinner").fadeOut("slow");
-				setTimeout(function(){$(".wrapper").fadeOut(1000);});
-			},2500);
+				setTimeout(function(){$(".wrapper").fadeOut(0001);});
+			},0001);
+
+			// $(window).scroll(function (event) {
+   				
+			// });
+
+
 			$(function(){
 
 				$('.navbar-menu-icon').on('click', function() {
@@ -30,11 +40,31 @@
 							});
 					}
 				});
+			// Scrollbar.initAll();
+				var scrollbar = Scrollbar.init(document.body, { speed: 1, damping: 0.5 });
 
+				scrollbar.addListener(function (status) {
+					var scroll = scrollbar.scrollTop;
+	   				if ( scroll < 386 ) {
+						TweenMax.to('.header .hero', 0 ,{y:(scroll/4), opacity:(1-scroll/400)});
+					}
+				});
 			});
+
 
 	</script>
 	<style type="text/css">
+		.scrollbar-track-x  {
+			display: none !important;
+		}
+
+		body {
+/*			overflow: hidden;
+*/			height:100vh;
+width: 100vw;
+  overflow: auto;
+
+		}
 		.main {
 	       	box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
 	       	background: #eeeeee;
@@ -164,7 +194,7 @@
 			padding-top: 8em;
     		padding-bottom: 4em;
 		    top: 0;
-    		z-index: -1;
+		    overflow: hidden;
    		}
 		.navbar-menu-icon {
 			background: url("data:image/svg+xml;charset=utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path stroke='rgba(41 ,43 , 44, 1.0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 6h24M4 12h18M4 18h22M4 24h14'/></svg>") no-repeat center center;
@@ -198,9 +228,9 @@
 			bottom: 0;
 			z-index: -3;
 		}
-		body {
+/*		body {
 			overflow-x: hidden;
-		}
+		}*/
 		.primary .title , .card h2 , .heading h2 {
 			font-weight: 100;
 		}
@@ -255,8 +285,8 @@
     	}
 	</style>
 </head>
-<body>
-<div class="app">
+<body data-scrollbar >
+<div class="app" >
 
 	<div class="wrapper">
    		<div class="spinner">
@@ -271,7 +301,7 @@
 				</ul>
 	  	</div>
 	</div>
-	<div class="main">
+	<div class="main ">
 		<div class="nav-bar row">
 			    <div class="col">
 				  <a  href="#" class="navbar-menu-icon float-left"></a>
@@ -290,25 +320,27 @@
 		<div class="content">
 			
 			<div class="header">
+				<div class="hero">
 	 			<div class="container">
 					<div class="row">
-						<div class="primary	col-9">
+						<div class="primary	col-md-8">
 							<h1 class="title">Marketing Principles</h1>
 							<p>One of essentials business functions that about creating, communicating, delivering, and exchanging offerings that have value for customers, clients, partners, and society at large.</p>
 						</div>
-					    <div class="secondary col-3">
+					    <div class="secondary col-md-4">
 							<div class="subtitle">Program</div><span>English Section & Gerogia </span>
 							<div class="subtitle">Year</div><span>Second</span>
 							<div class="subtitle">Semester</div><span>1</span>
 					    </div>
 			  		</div>
 			  	</div>
+			  	</div>
 			</div>
 		 	<div class="section">
 				<div class="container">
 					<div class="heading"><h2 class="text-muted">Materials</h2></div>
 					<div class="row">
-						<div class="col-9">
+						<div class="col-md-8">
 							<div class="card">
 							    <div class="card-header">Videos</div>
 							    <div class="card-block">
@@ -323,7 +355,41 @@
 							    
 							</div>
 						</div>
-					    <div class="col-3">
+					    <div class="col-md-4">
+					    	<div class="card">
+							    <div class="card-header">Files</div>
+							    <div class="card-block">
+							    
+							      <h4 class="card-title">Card title</h4>
+							      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							
+							    </div>
+							    <div class="card-footer">
+							      <small class="text-muted">Last updated 3 mins ago</small>
+							    </div>
+							    
+							</div>
+
+						</div>
+					</div>
+					<div class="heading"><h2 class="text-muted">Materials</h2></div>
+					<div class="row">
+						<div class="col-md-8">
+							<div class="card">
+							    <div class="card-header">Videos</div>
+							    <div class="card-block">
+							    
+							      <h4 class="card-title">Card title</h4>
+							      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+							
+							    </div>
+							    <div class="card-footer">
+							      <small class="text-muted">Last updated 3 mins ago</small>
+							    </div>
+							    
+							</div>
+						</div>
+					    <div class="col-md-4">
 					    	<div class="card">
 							    <div class="card-header">Files</div>
 							    <div class="card-block">
